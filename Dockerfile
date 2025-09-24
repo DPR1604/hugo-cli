@@ -1,6 +1,6 @@
 FROM alpine:3.22.1
 
-ARG HUGO_VERSION=0.133.1
+ARG HUGO_VERSION=0.134.3
 ARG TEMP=/tmp
 
 RUN apk add \
