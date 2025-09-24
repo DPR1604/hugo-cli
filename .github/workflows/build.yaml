@@ -1,0 +1,21 @@
+name: Build and push docker container to github registry
+on:
+  push:
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+'
+
+jobs:
+  runs-on: ubuntu-latest
+  steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Log in to the Container registry
+      uses: docker/login-action@65b78e6e13532edd9afa3aa52ac7964289d1a9c1
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+    - name: Build image
+      run: docker build . -t DPR1604/hugo-cli:$GITHUB_REF_NAME
+    - name: Push image to github registry
+      run: docker push DPR1604/hugo-cli:$GITHUB_REF_NAME
