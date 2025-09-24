@@ -17,6 +17,6 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build image
-        run: docker build . -t dpr1604/hugo-cli:${{ github.ref_name }}
+        run: docker build . -t ghcr.io/dpr1604/hugo-cli:${{ github.ref_name }}
       - name: Push image to github registry
         run: docker push ghcr.io/dpr1604/hugo-cli:${{ github.ref_name }}
