@@ -34,6 +34,5 @@ jobs:
       - name: Create GitHub Release with Auto-Generated Notes
         uses: ncipollo/release-action@v1
         with:
-          tag: $
+          tag: ${{ github.ref_name }}
           generateReleaseNotes: true  # Auto-generate release notes based on PRs and commits
-          token: $
