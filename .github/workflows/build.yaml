@@ -31,3 +31,9 @@ jobs:
       - name: Push image to github registry
         run: docker push ghcr.io/dpr1604/hugo-cli:${{ github.ref_name }}
 
+      - name: Create GitHub Release with Auto-Generated Notes
+        uses: ncipollo/release-action@v1
+        with:
+          tag: $
+          generateReleaseNotes: true  # Auto-generate release notes based on PRs and commits
+          token: $
